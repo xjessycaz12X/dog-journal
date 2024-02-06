@@ -5,6 +5,7 @@ fetch("https://dog.ceo/api/breeds/image/random")
     if (!response.ok) {
       throw new Error("Network response was not ok");
     }
+    console.log(response);
     return response.json();
   })
   .then((data) => {

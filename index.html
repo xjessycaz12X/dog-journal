@@ -1,53 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dog Diary</title>
-    <link rel="stylesheet" href="assets/stylesheets/reset.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"></head>
-<body>
+    <link rel="stylesheet" href="assets/stylesheets/reset.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
     <!--Nav Bar via Bootstrap-->
     <nav class="navbar bg-body-tertiary mb-5">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-            <img src="https://cdn-icons-png.flaticon.com/512/12/12638.png" alt="logo" width="30" height="24" class="d-inline-block align-text-top">
-            Dog Diary
-            </a>
-        </div>
-        </nav> 
-        
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/12/12638.png"
+            alt="logo"
+            width="30"
+            height="24"
+            class="d-inline-block align-text-top"
+          />
+          Dog Diary
+        </a>
+      </div>
+    </nav>
+
     <main class="dog-feed d-flex justify-content-evenly mb-5">
-        <!--Dog Facts Pane-->
-        <div class="card" style="height: 300px; min-width: 40%;">
-            <div class="card-body">
-              <h5 class="card-title">Fact of the Day</h5>
-              <p class="card-text">Placeholder for dog fact</p>
-            </div>
-          </div>
-          <!--Dog Photos Card-->
-          <div class="card" style="height: 300px; min-width: 40%;">
-            <div class="card-body">
-              <h5 class="card-title">Pup of the Day</h5>
-            </div>
-          </div>
+      <!--Dog Facts Pane-->
+      <div class="card" style="height: 300px; min-width: 40%">
+        <div class="card-body">
+          <h5 class="card-title">Fact of the Day</h5>
+          <p class="card-text">Placeholder for dog fact</p>
+        </div>
+      </div>
+      <!--Dog Photos Card-->
+      <div class="card" style="height: 300px; min-width: 40%">
+        <div class="card-body">
+          <h5 class="card-title">Pup of the Day</h5>
+        </div>
+      </div>
     </main>
     <div class="notebook d-flex justify-content-center mb-5">
-        <div class="card w-75 h-75">
-            <div class="card-body" style="min-height: 500px;">
-              <h5 class="card-title">My Journal</h5>
-              <div class="input-group mt-5 mb-5">
-                <span class="input-group-text">Today's Entry</span>
-                <textarea class="form-control" aria-label="With textarea"></textarea>
-                <input class="btn btn-primary" type="submit" value="Submit">
-              </div>
-              <div class="card-text">
-                <ul style="list-style: none;">
-                    <li><button type="button" class="btn btn-primary btn-sm me-5">Delete</button>Notes go here</li>
-                </ul>
-              </div>
-            </div>
-          </div>    
+      <div class="card w-75 h-75">
+        <div class="card-body" style="min-height: 500px">
+          <h5 class="card-title">My Journal</h5>
+          <div class="input-group mt-5 mb-5">
+            <span class="input-group-text">Today's Entry</span>
+            <textarea
+              class="form-control"
+              aria-label="With textarea"
+            ></textarea>
+            <input class="btn btn-primary" type="submit" value="Submit" />
+          </div>
+          <div class="card-text">
+            <ul style="list-style: none">
+              <li>
+                <button type="button" class="btn btn-primary btn-sm me-5">
+                  Delete</button
+                >Notes go here
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
-</body>
+    <script scr="assets\js\script.js"></script>
+  </body>
 </html>
