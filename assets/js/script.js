@@ -81,7 +81,7 @@ save.addEventListener("click", function (event) {
 
 //renders journal entries on page via localstorage
 function renderJournalEntries() {
-  journalLog = JSON.parse(localStorage.getItem("dogJournal"));
+  journalLog = JSON.parse(localStorage.getItem("dogJournal")) || [];
   journalPane.innerHTML = "";
 
   for (let i = 0; i < journalLog.length; i++) {
