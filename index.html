@@ -29,45 +29,49 @@
       </div>
     </nav>
 
-    <main class="dog-feed d-flex justify-content-evenly mb-5">
+    <main class="dog-feed row mb-5 justify-content-center">
       <!--Dog Facts Pane-->
-      <div class="card" style="height: 300px; min-width: 40%">
+      <div class="col-11 col-md-5 mb-5 ms-1">
+        <div class="card" style="height: 300px; min-width: 40%">
         <div class="card-body">
           <h5 class="card-title">Fact of the Day</h5>
-          <p class="card-text">Placeholder for dog fact</p>
-        </div>
-      </div>
-      <!--Dog Photos Card-->
-      <div class="card" style="height: 300px; min-width: 40%">
-        <div class="card-body">
-          <h5 class="card-title">Pup of the Day</h5>
-        </div>
-      </div>
-    </main>
-    <div class="notebook d-flex justify-content-center mb-5">
-      <div class="card w-75 h-75">
-        <div class="card-body" style="min-height: 500px">
-          <h5 class="card-title">My Journal</h5>
-          <div class="input-group mt-5 mb-5">
-            <span class="input-group-text">Today's Entry</span>
-            <textarea
-              class="form-control"
-              aria-label="With textarea"
-            ></textarea>
-            <input class="btn btn-primary" type="submit" value="Submit" />
-          </div>
-          <div class="card-text">
-            <ul style="list-style: none">
-              <li>
-                <button type="button" class="btn btn-primary btn-sm me-5">
-                  Delete</button
-                >Notes go here
-              </li>
-            </ul>
-          </div>
+          <p id="dog-facts" class="card-text"></p>
         </div>
       </div>
     </div>
-    <script scr="assets\js\script.js"></script>
+      <!--Dog Photos Card-->
+    <div class="col-11 col-md-5 mb-5 ms-1">
+        <div class="card" style="height: 300px; min-width: 40%">
+            <div class="card-body" id="dog-image-container">
+              <h5 class="card-title">Pup of the Day</h5>
+         </div>
+        </div>
+    </div>
+    </main>
+    <!--Notebooks Pane-->
+    <div>
+    <div class="col-10 col-md-10 mx-auto">
+        <div class="notebook d-flex justify-content-center mb-5">
+        <div class="card w-100 h-100">
+            <div class="card-body" style="min-height: 500px">
+            <h5 class="card-title">My Journal</h5>
+            <div class="input-group mt-5 mb-5">
+                <span class="input-group-text">Today's Entry</span>
+                <textarea
+                class="text-area form-control"
+                aria-label="With textarea"
+                ></textarea>
+                <input class="save btn btn-primary" type="submit" value="Submit" />
+            </div>
+            <div class="card-text">
+                <ul class = "journal-pane" style="list-style: none">
+                </ul>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>  
+</div>
+    <script src="assets\js\script.js"></script>
   </body>
 </html>
