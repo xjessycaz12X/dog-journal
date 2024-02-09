@@ -1,5 +1,40 @@
-//dog facts api fetch and DOM
+//dog facts/jokes api fetch and DOM
 let dogFactsEL = document.getElementById("dog-facts");
+let dogJokesEl = document.getElementById("dogJokes");
+
+function getDogJokes() {
+  fetch('https://icanhazdadjoke.com/search?term=dog',{
+    headers:{
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    }
+  }) 
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+
+    console.log(response);
+    return response.json();
+  })
+  .then((data) => {
+    console.log(data);
+    makeDogJoke(data.results);
+  })
+  .catch((err) => {
+    console.error("Fetch error:", err);
+  });
+}
+
+function makeDogJoke(jokes) {
+  var randomIndex = Math.floor(Math.random() * jokes.length);
+  var randomJoke = jokes[randomIndex].joke;
+  const element = document.createElement("p");
+  element.textContent = randomJoke;
+  dogJokesEl.appendChild(element);
+
+}
+getDogJokes();
 
 fetch("https://dogapi.dog/api/v2/facts?limit=10")
   .then((response) => {
@@ -49,15 +84,13 @@ function displayImages(images) {
     const imgElement = document.createElement("img");
     imgElement.src = image;
     imgElement.alt = "Random Dog Image";
-    imgElement.style = "height: 200px; width: 80%;";
+    imgElement.style = "height: 200px; width: 80%; max-width: fit-content"    
     imgElement.class = "mt-5 mx-auto";
     document.body.appendChild(imgElement);
     let dogImageContainer = document.getElementById("dog-image-container");
     dogImageContainer.appendChild(imgElement);
   });
 }
-
-
 
 //global variables
 let save = document.querySelector(".save");
@@ -87,17 +120,25 @@ function renderJournalEntries() {
   for (let i = 0; i < journalLog.length; i++) {
   
     const newLI = document.createElement("li");
-    newLI.classList = "mt-3";
+    newLI.classList = "mt-3 d-flex align-items-center overflow-auto"; //UPDATE HERE
 
     const newSpan = document.createElement("span");
     newSpan.textContent = journalLog[i];
 
     const deleteButton = document.createElement("button");
-    deleteButton.classList = "btn btn-primary btn-sm me-5";
+    deleteButton.classList = "btn btn-danger btn-sm me-5";
     deleteButton.textContent = "Delete";
     deleteButton.type = "button delete";
     deleteButton.addEventListener("click", function (event) {
       deleteEntry(event);
+    })
+    
+    //UPDATE HERE
+    deleteButton.addEventListener("mouseover", function (){
+      deleteButton.nextElementSibling.classList.add("bg-warning-subtle");
+    })
+    deleteButton.addEventListener("mouseout", function (){
+      deleteButton.nextElementSibling.classList.remove("bg-warning-subtle");
     })
 
     newLI.appendChild(deleteButton);
