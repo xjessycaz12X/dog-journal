@@ -11,6 +11,12 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Protest+Riot&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <!--Nav Bar via Bootstrap-->
@@ -18,11 +24,11 @@
       <div class="container-fluid">
         <a class="navbar-brand" href="#">
           <img
-            src="https://cdn-icons-png.flaticon.com/512/12/12638.png"
+            src="https://pngimg.com/d/paw_PNG13.png"
             alt="logo"
-            width="30"
-            height="24"
-            class="d-inline-block align-text-top"
+            width="35"
+            height="28"
+            class="d-inline-block align-text-top me-3"
           />
           Dog Diary
         </a>
@@ -30,48 +36,58 @@
     </nav>
 
     <main class="dog-feed row mb-5 justify-content-center">
-      <!--Dog Facts Pane-->
+      <!--Dog Facts/Jokes Pane-->
       <div class="col-11 col-md-5 mb-5 ms-1">
         <div class="card" style="height: 300px; min-width: 40%">
-        <div class="card-body">
-          <h5 class="card-title">Fact of the Day</h5>
-          <p id="dog-facts" class="card-text"></p>
+          <div
+            class="d-flex flex-column align-items-center justify-content-evenly card-body"
+          >
+            <h5 class="card-title"><u>Fact of the Day</u></h5>
+            <p id="dog-facts" class="card-text"></p>
+            <h5><u>Joke of the Day</u></h5>
+            <p id="dogJokes"></p>
+          </div>
         </div>
       </div>
-    </div>
       <!--Dog Photos Card-->
-    <div class="col-11 col-md-5 mb-5 ms-1">
+      <div class="col-11 col-md-5 mb-5 ms-1">
         <div class="card" style="height: 300px; min-width: 40%">
-            <div class="card-body" id="dog-image-container">
-              <h5 class="card-title">Pup of the Day</h5>
-         </div>
+          <div
+            class="card-body d-flex align-items-center flex-column"
+            id="dog-image-container"
+          >
+            <h5 class="card-title">Pup of the Day</h5>
+          </div>
         </div>
-    </div>
+      </div>
     </main>
     <!--Notebooks Pane-->
     <div>
-    <div class="col-10 col-md-10 mx-auto">
+      <div class="col-10 col-md-10 mx-auto">
         <div class="notebook d-flex justify-content-center mb-5">
-        <div class="card w-100 h-100">
+          <div class="card w-100 h-100">
             <div class="card-body" style="min-height: 500px">
-            <h5 class="card-title">My Journal</h5>
-            <div class="input-group mt-5 mb-5">
+              <h5 class="card-title">My Journal</h5>
+              <div class="input-group mt-5 mb-5">
                 <span class="input-group-text">Today's Entry</span>
                 <textarea
-                class="text-area form-control"
-                aria-label="With textarea"
+                  class="text-area form-control"
+                  aria-label="With textarea"
                 ></textarea>
-                <input class="save btn btn-primary" type="submit" value="Submit" />
+                <input
+                  class="save btn btn-primary"
+                  type="submit"
+                  value="Submit"
+                />
+              </div>
+              <div class="card-text">
+                <ul class="journal-pane" style="list-style: none"></ul>
+              </div>
             </div>
-            <div class="card-text">
-                <ul class = "journal-pane" style="list-style: none">
-                </ul>
-            </div>
-            </div>
+          </div>
         </div>
-        </div>
-    </div>  
-</div>
+      </div>
+    </div>
     <script src="assets\js\script.js"></script>
   </body>
 </html>
