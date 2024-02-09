@@ -26,3 +26,11 @@ WHEN I write down interesting information in the notes section
 THEN those facts appear in a "saved facts" pane and are automatically stored w/in my browser
 
 ## Homepage
+
+![image](./assets/landing-page.png)
+
+## LINKS
+
+[Github](https://github.com/xjessycaz12X/dog-journal)
+
+[DeployedApp](https://xjessycaz12x.github.io/dog-journal/)
