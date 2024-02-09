@@ -87,17 +87,26 @@ function renderJournalEntries() {
   for (let i = 0; i < journalLog.length; i++) {
   
     const newLI = document.createElement("li");
-    newLI.classList = "mt-3";
+    newLI.classList = "mt-3 d-flex align-items-center"; //UPDATE HERE
 
     const newSpan = document.createElement("span");
     newSpan.textContent = journalLog[i];
+    newSpan.classList = "overflow-wrap"
 
     const deleteButton = document.createElement("button");
-    deleteButton.classList = "btn btn-primary btn-sm me-5";
+    deleteButton.classList = "btn btn-danger btn-sm me-5";
     deleteButton.textContent = "Delete";
     deleteButton.type = "button delete";
     deleteButton.addEventListener("click", function (event) {
       deleteEntry(event);
+    })
+    
+    //UPDATE HERE
+    deleteButton.addEventListener("mouseover", function (){
+      deleteButton.nextElementSibling.classList.add("bg-warning-subtle");
+    })
+    deleteButton.addEventListener("mouseout", function (){
+      deleteButton.nextElementSibling.classList.remove("bg-warning-subtle");
     })
 
     newLI.appendChild(deleteButton);
