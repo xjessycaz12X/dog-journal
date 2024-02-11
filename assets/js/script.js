@@ -153,13 +153,21 @@ function createEntry() {
   //creates DOM journal entry
   let entry = textArea.value;
 
-  //resets 
-  textArea.value = "";
+  // creates DOM journal entry
+  entry = textArea.value.trim(); // trim() removes leading and trailing white space
 
-  //add to local storage
-  journalLog.push(entry);
-  localStorage.setItem("dogJournal", JSON.stringify(journalLog));
-  renderJournalEntries();
+  if (textArea.value === "") {
+    alert("Please place text");
+  }
+
+  else {
+    //add to local storage
+    journalLog.push(entry);
+    localStorage.setItem("dogJournal", JSON.stringify(journalLog));
+    renderJournalEntries();
+  }
+
+  
 }
 
 //filters array and local storage then refreshes page
