@@ -14,56 +14,38 @@ let dogJournal = {
   entries: journalLog,
 };
 
-
-//appends dog joke to pane
-function init() {
   //dog joke api
-function getDogJokes() {
-  fetch('https://icanhazdadjoke.com/search?term=dog',{
-    headers:{
-      "Content-Type": "application/json",
-      "Accept": "application/json"
-    }
-  }) 
-  .then((response) => {
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-
-    return response.json();
-  })
-  .then((data) => {
-    makeDogJoke(data.results);
-  })
-  .catch((err) => {
-    console.error("Fetch error:", err);
-  });
-}
-
-function makeDogJoke(jokes) {
-  var randomIndex = Math.floor(Math.random() * jokes.length);
-  var randomJoke = jokes[randomIndex].joke;
-  const element = document.createElement("p");
-  element.textContent = randomJoke;
-  dogJokesEl.appendChild(element);
-
-}
-getDogJokes();
-
-fetch("https://dogapi.dog/api/v2/facts?limit=10")
-  .then((response) => {
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-
-    return response.json();
-  })
-  .then((data) => {
-    displayFacts(data);
-  })
-  .catch((err) => {
-    console.error("Fetch error:", err);
-  });
+  function getDogJokes() {
+    fetch('https://icanhazdadjoke.com/search?term=dog',{
+      headers:{
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      }
+    }) 
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+  
+      return response.json();
+    })
+    .then((data) => {
+      makeDogJoke(data.results);
+    })
+    .catch((err) => {
+      console.error("Fetch error:", err);
+    });
+  }
+  
+  //adds dog jokes to joke/fact pane
+  function makeDogJoke(jokes) {
+    var randomIndex = Math.floor(Math.random() * jokes.length);
+    var randomJoke = jokes[randomIndex].joke;
+    const element = document.createElement("p");
+    element.textContent = randomJoke;
+    dogJokesEl.appendChild(element);
+  
+  }
 
 //displays dog facts w/in dog facts pane
 function displayFacts(facts) {
@@ -72,22 +54,7 @@ function displayFacts(facts) {
   dogFactsEL.appendChild(pElement);
 }
 
-//dog photo api fetch and DOM
-fetch("https://dog.ceo/api/breeds/image/random")
-  .then((response) => {
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-    return response.json();
-  })
-  .then((data) => {
-    displayImages([data.message]);
-  })
-  .catch((err) => {
-    console.error("Fetch error:", err);
-  });
-
-//display images w/in dog image container on html
+//displays images w/in dog image pane
 function displayImages(images) {
   images.forEach((image) => {
     const imgElement = document.createElement("img");
@@ -106,8 +73,6 @@ save.addEventListener("click", function (event) {
   createEntry(event);
   textArea.value = "";
 });
-
-//functions
 
 //renders journal entries on page via localstorage
 function renderJournalEntries() {
@@ -163,8 +128,6 @@ function createEntry() {
     localStorage.setItem("dogJournal", JSON.stringify(journalLog));
     renderJournalEntries();
   }
-
-  
 }
 
 //filters array and local storage then refreshes page
@@ -173,6 +136,44 @@ function deleteEntry(event) {
   localStorage.setItem("dogJournal", JSON.stringify(updatedJournalLog));
   renderJournalEntries();
 }
+
+
+//appends dog joke to pane
+function init() {
+
+getDogJokes();
+
+fetch("https://dogapi.dog/api/v2/facts?limit=10")
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+
+    return response.json();
+  })
+  .then((data) => {
+    displayFacts(data);
+  })
+  .catch((err) => {
+    console.error("Fetch error:", err);
+  });
+
+//dog photo api fetch and DOM
+fetch("https://dog.ceo/api/breeds/image/random")
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    return response.json();
+  })
+  .then((data) => {
+    displayImages([data.message]);
+  })
+  .catch((err) => {
+    console.error("Fetch error:", err);
+  });
+
+
 
 renderJournalEntries();
   
