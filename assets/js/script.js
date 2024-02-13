@@ -1,7 +1,23 @@
-//dog facts/jokes api fetch and DOM
+//global variables
+
+//dog jokes/facts pane variables
 let dogFactsEL = document.getElementById("dog-facts");
 let dogJokesEl = document.getElementById("dogJokes");
 
+//dog journal variables
+let save = document.querySelector(".save");
+let textArea = document.querySelector(".text-area");
+let journalPane = document.querySelector(".journal-pane");
+let currentIndex = 0;
+let journalLog = JSON.parse(localStorage.getItem("dogJournal")) || [];
+let dogJournal = {
+  entries: journalLog,
+};
+
+
+//appends dog joke to pane
+function init() {
+  //dog joke api
 function getDogJokes() {
   fetch('https://icanhazdadjoke.com/search?term=dog',{
     headers:{
@@ -14,11 +30,9 @@ function getDogJokes() {
       throw new Error("Network response was not ok");
     }
 
-    console.log(response);
     return response.json();
   })
   .then((data) => {
-    console.log(data);
     makeDogJoke(data.results);
   })
   .catch((err) => {
@@ -42,11 +56,9 @@ fetch("https://dogapi.dog/api/v2/facts?limit=10")
       throw new Error("Network response was not ok");
     }
 
-    console.log(response);
     return response.json();
   })
   .then((data) => {
-    console.log(data);
     displayFacts(data);
   })
   .catch((err) => {
@@ -60,18 +72,15 @@ function displayFacts(facts) {
   dogFactsEL.appendChild(pElement);
 }
 
-
 //dog photo api fetch and DOM
 fetch("https://dog.ceo/api/breeds/image/random")
   .then((response) => {
     if (!response.ok) {
       throw new Error("Network response was not ok");
     }
-    console.log(response);
     return response.json();
   })
   .then((data) => {
-    console.log(data);
     displayImages([data.message]);
   })
   .catch((err) => {
@@ -92,22 +101,10 @@ function displayImages(images) {
   });
 }
 
-//global variables
-let save = document.querySelector(".save");
-let textArea = document.querySelector(".text-area");
-let journalPane = document.querySelector(".journal-pane");
-
-//local storage variables
-let currentIndex = 0;
-let journalLog = JSON.parse(localStorage.getItem("dogJournal")) || [];
-
-let dogJournal = {
-  entries: journalLog,
-};
-
 //eventListeners
 save.addEventListener("click", function (event) {
   createEntry(event);
+  textArea.value = "";
 });
 
 //functions
@@ -178,3 +175,8 @@ function deleteEntry(event) {
 }
 
 renderJournalEntries();
+  
+}
+
+init();
+
