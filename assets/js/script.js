@@ -36,7 +36,7 @@ let dogJournal = {
       console.error("Fetch error:", err);
     });
   }
-  
+
   //adds dog jokes to joke/fact pane
   function makeDogJoke(jokes) {
     var randomIndex = Math.floor(Math.random() * jokes.length);
@@ -82,7 +82,7 @@ function renderJournalEntries() {
   for (let i = 0; i < journalLog.length; i++) {
   
     const newLI = document.createElement("li");
-    newLI.classList = "mt-3 d-flex align-items-center overflow-auto"; //UPDATE HERE
+    newLI.classList = "mt-3 d-flex align-items-center overflow-auto";
 
     const newSpan = document.createElement("span");
     newSpan.textContent = journalLog[i];
@@ -95,7 +95,6 @@ function renderJournalEntries() {
       deleteEntry(event);
     })
     
-    //UPDATE HERE
     deleteButton.addEventListener("mouseover", function (){
       deleteButton.nextElementSibling.classList.add("bg-warning-subtle");
     })
