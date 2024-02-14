@@ -16,7 +16,7 @@ let dogJournal = {
 
 //dog joke api
 function getDogJokes() {
-  fetch('https://icanhazdadjoke.com/search?term=dog', {
+  fetch("https://icanhazdadjoke.com/search?term=dog", {
     headers: {
       "Content-Type": "application/json",
       "Accept": "application/json"
