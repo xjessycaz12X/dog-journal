@@ -50,7 +50,7 @@ function makeDogJoke(jokes) {
 //displays dog facts w/in dog facts pane
 function displayFacts(facts) {
   const pElement = document.createElement("p");
-  pElement.textContent = facts.data[0].attributes.body;
+  pElement.textContent = facts.fact;
   dogFactsEL.appendChild(pElement);
 }
 
@@ -141,20 +141,25 @@ function init() {
 
   getDogJokes();
 
-  fetch("https://dogapi.dog/api/v2/facts?limit=10")
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-
-      return response.json();
-    })
-    .then((data) => {
-      displayFacts(data);
-    })
-    .catch((err) => {
-      console.error("Fetch error:", err);
-    });
+  fetch("https://random-dog-facts.p.rapidapi.com/",{
+  method: "GET",
+  headers: {
+    "X-RapidAPI-Key": "24f6ec8298mshf87715c7188e534p1d7672jsn720b0c69221e",
+    "X-RapidAPI-Host": "random-dog-facts.p.rapidapi.com"
+  }
+})
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    return response.json();
+  })
+  .then((data) => {
+    displayFacts(data);
+  })
+  .catch((err) => {
+    console.error("Fetch error:", err);
+  });
 
   //dog photo api fetch and DOM
   fetch("https://dog.ceo/api/breeds/image/random")
